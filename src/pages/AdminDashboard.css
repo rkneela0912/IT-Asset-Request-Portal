@@ -1,0 +1,202 @@
+.admin-page {
+  padding: var(--space-10) 0 var(--space-16);
+}
+
+.admin-page-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.admin-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 99px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  border: 1px solid rgba(26, 86, 219, 0.2);
+  flex-shrink: 0;
+}
+
+/* ── Metric Cards ─────────────────────────────────────────── */
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-4);
+  margin-bottom: var(--space-8);
+}
+
+.metric-card {
+  padding: var(--space-5) var(--space-5) var(--space-4);
+  position: relative;
+  overflow: hidden;
+}
+
+.metric-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-2);
+}
+
+.metric-value {
+  font-size: 2rem;
+  font-weight: 500;
+  color: var(--color-secondary);
+  line-height: 1;
+  margin-bottom: var(--space-1);
+}
+
+.metric-sub {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  font-weight: 300;
+}
+
+.metric-accent {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+}
+.metric-accent--blue  { background: var(--color-primary); }
+.metric-accent--amber { background: var(--color-warning); }
+.metric-accent--green { background: var(--color-success); }
+
+/* ── Main grid ────────────────────────────────────────────── */
+.admin-main-grid {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: var(--space-6);
+  align-items: start;
+}
+
+.tracker-table-wrap {
+  overflow-x: auto;
+}
+
+.request-id {
+  font-size: 0.8125rem;
+  color: var(--color-primary);
+}
+
+.employee-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.employee-name { font-weight: 500; }
+.employee-dept {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+.asset-label { font-size: 0.875rem; font-weight: 500; }
+.date-cell   { font-size: 0.75rem; color: var(--color-text-muted); }
+
+.urgency-dot {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  text-transform: capitalize;
+  font-family: var(--font-mono);
+}
+
+.action-btns {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.action-done {
+  color: var(--color-border-strong);
+  font-size: 0.875rem;
+}
+
+/* ── Bar Chart ────────────────────────────────────────────── */
+.breakdown-card {
+  padding: var(--space-5);
+  position: sticky;
+  top: 80px;
+}
+
+.bar-chart {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.bar-row {
+  display: grid;
+  grid-template-columns: 90px 1fr 36px;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.bar-label {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  font-weight: 400;
+}
+
+.bar-track {
+  height: 8px;
+  background: var(--color-bg);
+  border-radius: 99px;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+}
+
+.bar-fill {
+  height: 100%;
+  border-radius: 99px;
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: barGrow 0.8s ease-out both;
+}
+
+@keyframes barGrow {
+  from { width: 0 !important; }
+}
+
+.bar-value {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  text-align: right;
+}
+
+/* ── Summary ──────────────────────────────────────────────── */
+.summary-stats {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.summary-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.875rem;
+}
+
+.summary-label { color: var(--color-text-muted); }
+.summary-value { }
+
+/* ── Responsive ───────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .admin-main-grid { grid-template-columns: 1fr; }
+  .breakdown-card  { position: static; }
+}
+@media (max-width: 768px) {
+  .metric-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 480px) {
+  .metric-grid { grid-template-columns: 1fr; }
+}
