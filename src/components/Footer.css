@@ -1,0 +1,22 @@
+.footer {
+  margin-top: auto;
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  padding: var(--space-5) 0;
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-copy {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
+.footer-tagline {
+  font-size: 0.8125rem;
+  color: var(--color-border-strong);
+}
