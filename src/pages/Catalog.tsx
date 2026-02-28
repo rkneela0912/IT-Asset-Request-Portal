@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, type ReactElement } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './Catalog.css'
 
@@ -10,7 +10,6 @@ interface Asset {
   category: Exclude<Category, 'all'>
   description: string
   specs: string
-  imageId: string
   available: boolean
 }
 
@@ -21,7 +20,6 @@ const assets: Asset[] = [
     category: 'laptops',
     description: 'Apple M4 Pro chip, 24GB RAM, 512GB SSD. Ideal for engineering and design teams.',
     specs: 'M4 Pro · 24GB · 512GB',
-    imageId: 'EJMTKCZ00I0',
     available: true,
   },
   {
@@ -30,7 +28,6 @@ const assets: Asset[] = [
     category: 'laptops',
     description: 'Intel Core i9, 32GB RAM, 1TB SSD. Windows flagship for power users.',
     specs: 'Core i9 · 32GB · 1TB',
-    imageId: '_sGlFU5kvNE',
     available: true,
   },
   {
@@ -39,7 +36,6 @@ const assets: Asset[] = [
     category: 'laptops',
     description: 'Ultra-lightweight business laptop. 16GB RAM, 512GB SSD, LTE ready.',
     specs: 'Core i7 · 16GB · 512GB',
-    imageId: 'DdiwOzeqkDU',
     available: true,
   },
   {
@@ -48,7 +44,6 @@ const assets: Asset[] = [
     category: 'monitors',
     description: '4K IPS display with USB-C hub. Perfect for detail-oriented work.',
     specs: '27" 4K IPS · USB-C 90W',
-    imageId: 'XWPoEJnLQAc',
     available: true,
   },
   {
@@ -57,7 +52,6 @@ const assets: Asset[] = [
     category: 'monitors',
     description: 'Curved ultrawide display for multitasking and creative workflows.',
     specs: '34" 3440×1440 · 100Hz',
-    imageId: 'rjXukZYsO_0',
     available: true,
   },
   {
@@ -66,7 +60,6 @@ const assets: Asset[] = [
     category: 'monitors',
     description: 'High-brightness 4K VA panel. Excellent for data analysis and spreadsheets.',
     specs: '32" 4K VA · HDR600',
-    imageId: 'gyRa86ExKTw',
     available: false,
   },
   {
@@ -75,7 +68,6 @@ const assets: Asset[] = [
     category: 'peripherals',
     description: 'Wireless keyboard with backlit keys and multi-device pairing.',
     specs: 'Wireless · Backlit · Multi-device',
-    imageId: '2PLFgAKVpe0',
     available: true,
   },
   {
@@ -84,7 +76,6 @@ const assets: Asset[] = [
     category: 'peripherals',
     description: 'Advanced wireless mouse with ergonomic design and MagSpeed scroll.',
     specs: 'Wireless · 8000 DPI · USB-C',
-    imageId: 'MPqxFO94AKU',
     available: true,
   },
   {
@@ -93,7 +84,6 @@ const assets: Asset[] = [
     category: 'software',
     description: 'Full Office suite with 1TB OneDrive, Teams, and enterprise security.',
     specs: 'Annual license · Cloud + Desktop',
-    imageId: 'ieDXimQcLeM',
     available: true,
   },
   {
@@ -102,10 +92,48 @@ const assets: Asset[] = [
     category: 'software',
     description: 'All-apps subscription: Photoshop, Illustrator, Premiere, and 20+ more.',
     specs: 'Annual license · All apps',
-    imageId: 'KuMvKpNwh4k',
     available: true,
   },
 ]
+
+const categoryIcons: Record<Exclude<Category, 'all'>, ReactElement> = {
+  laptops: (
+    <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+      <rect x="8" y="13" width="48" height="31" rx="3" stroke="currentColor" strokeWidth="2.5"/>
+      <rect x="14" y="19" width="36" height="19" rx="1" fill="currentColor" opacity="0.12"/>
+      <path d="M2 44h60l-3.5 4.5a2 2 0 01-1.6.8H7.1a2 2 0 01-1.6-.8L2 44z" stroke="currentColor" strokeWidth="2.5" strokeLinejoin="round"/>
+      <rect x="26" y="45" width="12" height="2.5" rx="1.25" fill="currentColor" opacity="0.35"/>
+    </svg>
+  ),
+  monitors: (
+    <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+      <rect x="4" y="8" width="56" height="38" rx="3" stroke="currentColor" strokeWidth="2.5"/>
+      <rect x="10" y="14" width="44" height="26" rx="1" fill="currentColor" opacity="0.12"/>
+      <path d="M22 46v5M42 46v5" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/>
+      <path d="M16 51h32" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/>
+    </svg>
+  ),
+  peripherals: (
+    <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+      <rect x="4" y="19" width="56" height="26" rx="4" stroke="currentColor" strokeWidth="2.5"/>
+      {[10,19,28,37,46].map(x => (
+        <rect key={x} x={x} y="26" width="6" height="5" rx="1" fill="currentColor" opacity="0.45"/>
+      ))}
+      {[10,20,40,48].map(x => (
+        <rect key={x+'b'} x={x} y="34" width="6" height="5" rx="1" fill="currentColor" opacity="0.45"/>
+      ))}
+      <rect x="28" y="34" width="10" height="5" rx="1" fill="currentColor" opacity="0.45"/>
+    </svg>
+  ),
+  software: (
+    <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+      <rect x="8" y="8" width="48" height="48" rx="8" stroke="currentColor" strokeWidth="2.5"/>
+      <path d="M23 27l-7 5 7 5" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M41 27l7 5-7 5" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M35 20l-6 24" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/>
+    </svg>
+  ),
+}
 
 const categories: { value: Category; label: string }[] = [
   { value: 'all',        label: 'All Assets' },
@@ -164,13 +192,10 @@ export default function Catalog() {
               style={{ animationDelay: `${i * 0.06}s` }}
               role="listitem"
             >
-              <div className="asset-img-wrap">
-                <img
-                  src={`https://images.unsplash.com/photo-${asset.imageId}?w=480&h=260&fit=crop`}
-                  alt={asset.name}
-                  className="asset-img"
-                  loading="lazy"
-                />
+              <div className={`asset-img-wrap asset-img-wrap--${asset.category}`}>
+                <div className="asset-icon" aria-hidden="true">
+                  {categoryIcons[asset.category]}
+                </div>
                 {!asset.available && (
                   <span className="asset-unavailable-tag" aria-label="Currently unavailable">
                     Out of stock
