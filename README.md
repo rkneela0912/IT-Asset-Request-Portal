@@ -195,6 +195,15 @@ MIT License — see [LICENSE](LICENSE) for details.
 
 ---
 
+## Built By
+
+**[Ranjit Neela](https://ranjithneela.com)** — Developer at EPMPoint, Inc., specialising in Microsoft Power Platform, enterprise web applications, and AI-assisted development workflows.
+
+- Website: [ranjithneela.com](https://ranjithneela.com)
+- GitHub: [@rkneela0912](https://github.com/rkneela0912)
+
+---
+
 ## About EPMPoint
 
 [EPMPoint, Inc.](https://epmpoint.com) helps organisations design and deliver technology-driven solutions across the Microsoft Power Platform ecosystem.
