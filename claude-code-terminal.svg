@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="610" viewBox="0 0 920 610">
+  <defs>
+    <style>
+      .win-bg    { fill: #0d1117; }
+      .bar-bg    { fill: #161b22; }
+      .bar-text  { font: 600 12px 'Segoe UI', system-ui, sans-serif; fill: #8b949e; }
+      .bar-title { font: 600 12px 'Segoe UI', system-ui, sans-serif; fill: #e6edf3; }
+      .dot-r     { fill: #ff5f57; }
+      .dot-y     { fill: #ffbd2e; }
+      .dot-g     { fill: #28c840; }
+
+      .mono      { font: 12.5px 'Cascadia Code','Fira Code','Consolas',monospace; }
+      .prompt    { fill: #f0883e; }
+      .cmd       { fill: #79c0ff; }
+      .success   { fill: #3fb950; }
+      .output    { fill: #8b949e; }
+      .white     { fill: #e6edf3; }
+      .dim       { fill: #484f58; }
+      .amber     { fill: #d97706; }
+      .purple    { fill: #a371f7; }
+      .claude    { fill: #d97706; font: 700 12.5px 'Cascadia Code','Fira Code','Consolas',monospace; }
+      .thinking  { fill: #6e7681; font: italic 12.5px 'Cascadia Code','Fira Code','Consolas',monospace; }
+      .badge     { fill: #1f6feb; }
+      .badge-txt { font: 700 10px 'Segoe UI', system-ui, sans-serif; fill: #ffffff; }
+      .section   { fill: #21262d; }
+      .sep       { stroke: #30363d; stroke-width: 1; }
+    </style>
+    <!-- Glow filter for the Claude badge -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Window background -->
+  <rect width="920" height="610" rx="10" class="win-bg"/>
+
+  <!-- Title bar -->
+  <rect width="920" height="40" rx="10" class="bar-bg"/>
+  <rect y="30" width="920" height="10" class="bar-bg"/>
+
+  <!-- Traffic lights -->
+  <circle cx="20" cy="20" r="6" class="dot-r"/>
+  <circle cx="40" cy="20" r="6" class="dot-y"/>
+  <circle cx="60" cy="20" r="6" class="dot-g"/>
+
+  <!-- Claude Code badge -->
+  <rect x="365" y="8" width="190" height="24" rx="4" class="badge" filter="url(#glow)"/>
+  <text x="460" y="24" text-anchor="middle" class="badge-txt">✦ Claude Code  |  claude-sonnet-4-6</text>
+
+  <!-- Title bar info -->
+  <text x="580" y="24" class="bar-text">it-asset-request-portal  —  bash</text>
+
+  <!-- Separator -->
+  <line x1="0" y1="40" x2="920" y2="40" class="sep"/>
+
+  <!-- ─── BLOCK 1: User prompt ─────────────────────────── -->
+  <text x="18" y="66" class="mono prompt">❯</text>
+  <text x="36" y="66" class="mono white">Build an IT Asset Request Portal for enterprise employees.</text>
+  <text x="36" y="83" class="mono white">Use React + TypeScript. Clean, professional design.</text>
+
+  <!-- Claude thinking -->
+  <text x="18" y="105" class="mono amber">✦</text>
+  <text x="36" y="105" class="mono amber">Scaffolding project from React template…</text>
+
+  <!-- ─── BLOCK 2: File writes ─────────────────────────── -->
+  <rect x="12" y="114" width="896" height="52" rx="4" class="section"/>
+  <text x="24" y="131" class="mono dim">  Write</text>
+  <text x="80" y="131" class="mono success">✔</text>
+  <text x="96" y="131" class="mono white">C:\Apps\it-asset-request-portal\package.json</text>
+  <text x="24" y="148" class="mono dim">  Write</text>
+  <text x="80" y="148" class="mono success">✔</text>
+  <text x="96" y="148" class="mono white">src/App.tsx   src/components/Layout.tsx   src/main.tsx   index.html</text>
+  <text x="24" y="164" class="mono dim">  Write</text>
+  <text x="80" y="164" class="mono success">✔</text>
+  <text x="96" y="164" class="mono white">src/styles/theme.css   src/styles/globals.css   powerpages.config.json</text>
+
+  <!-- ─── BLOCK 3: npm install ─────────────────────────── -->
+  <text x="18" y="188" class="mono prompt">❯</text>
+  <text x="36" y="188" class="mono cmd">npm install</text>
+  <text x="18" y="205" class="mono output">  added 72 packages, and audited 73 packages in 32s</text>
+  <text x="18" y="221" class="mono output">  10 packages are looking for funding  ·  found 0 vulnerabilities</text>
+
+  <!-- ─── BLOCK 4: git init ────────────────────────────── -->
+  <text x="18" y="244" class="mono prompt">❯</text>
+  <text x="36" y="244" class="mono cmd">git init  &amp;&amp;  git add -A  &amp;&amp;  git commit -m "Initial scaffold: IT Asset Request Portal (React)"</text>
+  <text x="18" y="261" class="mono success">  [master (root-commit) d0b23bb]  Initial scaffold: IT Asset Request Portal (React)</text>
+  <text x="18" y="277" class="mono output">  13 files changed, 2373 insertions(+)</text>
+
+  <!-- Separator -->
+  <line x1="12" y1="292" x2="908" y2="292" class="sep"/>
+
+  <!-- ─── BLOCK 5: vite dev ─────────────────────────────── -->
+  <text x="18" y="310" class="mono amber">✦</text>
+  <text x="36" y="310" class="mono amber">Starting dev server…  building pages: Home → Catalog → RequestForm → StatusTracker → AdminDashboard</text>
+
+  <text x="18" y="330" class="mono prompt">❯</text>
+  <text x="36" y="330" class="mono cmd">npm run dev</text>
+  <text x="18" y="347" class="mono white">  VITE v6.4.1  ready in 388 ms</text>
+  <text x="18" y="363" class="mono success">  ➜  Local:   http://localhost:5173/</text>
+  <text x="18" y="379" class="mono dim">  ➜  Network: use --host to expose</text>
+
+  <!-- ─── BLOCK 6: Component commits ───────────────────── -->
+  <rect x="12" y="392" width="896" height="98" rx="4" class="section"/>
+  <text x="24" y="409" class="mono dim">  commit</text>
+  <text x="84" y="409" class="mono success">●</text>
+  <text x="100" y="409" class="mono white">00e63a0</text>
+  <text x="168" y="409" class="mono output">Add Home page: hero, quick-action cards, stats strip, announcements</text>
+  <text x="24" y="426" class="mono dim">  commit</text>
+  <text x="84" y="426" class="mono success">●</text>
+  <text x="100" y="426" class="mono white">e84eb1f</text>
+  <text x="168" y="426" class="mono output">Add Asset Catalog page: category filters, asset grid, request buttons</text>
+  <text x="24" y="443" class="mono dim">  commit</text>
+  <text x="84" y="443" class="mono success">●</text>
+  <text x="100" y="443" class="mono white">545ee5d</text>
+  <text x="168" y="443" class="mono output">Add Request Form page: 3-step form with validation, review step, success confirmation</text>
+  <text x="24" y="460" class="mono dim">  commit</text>
+  <text x="84" y="460" class="mono success">●</text>
+  <text x="100" y="460" class="mono white">aaf1807</text>
+  <text x="168" y="460" class="mono output">Add Status Tracker page: request table, search/filter, expandable IT notes</text>
+  <text x="24" y="477" class="mono dim">  commit</text>
+  <text x="84" y="477" class="mono success">●</text>
+  <text x="100" y="477" class="mono white">c1dc354</text>
+  <text x="168" y="477" class="mono output">Add Admin Dashboard: metric cards, approval queue, category bar chart</text>
+  <text x="24" y="494" class="mono dim">  commit</text>
+  <text x="84" y="494" class="mono success">●</text>
+  <text x="100" y="494" class="mono white">5faad68</text>
+  <text x="168" y="494" class="mono output">Wire up all 5 routes: Home, Catalog, RequestForm, StatusTracker, AdminDashboard</text>
+
+  <!-- Separator -->
+  <line x1="12" y1="504" x2="908" y2="504" class="sep"/>
+
+  <!-- ─── BLOCK 7: Production build ────────────────────── -->
+  <text x="18" y="522" class="mono prompt">❯</text>
+  <text x="36" y="522" class="mono cmd">npm run build</text>
+  <text x="18" y="539" class="mono output">  vite v6.4.1  building for production…   ✓ 60 modules transformed</text>
+  <text x="18" y="555" class="mono success">  dist/index.html          0.86 kB │ gzip:  0.48 kB</text>
+  <text x="18" y="571" class="mono success">  dist/assets/index.css   26.45 kB │ gzip:  5.21 kB</text>
+  <text x="18" y="587" class="mono success">  dist/assets/index.js   270.87 kB │ gzip: 83.01 kB   ✓ built in 907ms</text>
+
+  <!-- Session duration badge -->
+  <rect x="762" y="577" width="146" height="22" rx="3" fill="#21262d"/>
+  <text x="835" y="592" text-anchor="middle" font="11px 'Segoe UI', sans-serif" fill="#6e7681" style="font:11px 'Segoe UI',sans-serif">session · claude-sonnet-4-6</text>
+</svg>

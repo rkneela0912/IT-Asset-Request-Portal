@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+      xmlns:w="urn:schemas-microsoft-com:office:word"
+      xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+  <meta charset="UTF-8">
+  <meta name="generator" content="Microsoft Word-compatible HTML">
+  <title>How EPMPoint Built an IT Asset Request Portal with Power Pages and Claude Code</title>
+  <style>
+    /* Word-compatible styles */
+    body {
+      font-family: Calibri, 'Segoe UI', Arial, sans-serif;
+      font-size: 11pt;
+      line-height: 1.6;
+      color: #212121;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 72pt 72pt 72pt 72pt;
+    }
+
+    h1 {
+      font-family: Calibri, Arial, sans-serif;
+      font-size: 26pt;
+      font-weight: 700;
+      color: #1a56db;
+      margin-top: 0;
+      margin-bottom: 6pt;
+      line-height: 1.2;
+    }
+
+    .subtitle {
+      font-size: 13pt;
+      color: #4b5563;
+      font-style: italic;
+      margin-bottom: 24pt;
+      font-weight: 400;
+    }
+
+    .meta {
+      font-size: 10pt;
+      color: #6b7280;
+      margin-bottom: 36pt;
+      border-bottom: 1pt solid #e5e7eb;
+      padding-bottom: 12pt;
+    }
+
+    h2 {
+      font-family: Calibri, Arial, sans-serif;
+      font-size: 16pt;
+      font-weight: 700;
+      color: #1e3a5f;
+      margin-top: 28pt;
+      margin-bottom: 8pt;
+    }
+
+    h3 {
+      font-family: Calibri, Arial, sans-serif;
+      font-size: 12pt;
+      font-weight: 700;
+      color: #1a56db;
+      margin-top: 18pt;
+      margin-bottom: 6pt;
+    }
+
+    p {
+      margin-top: 0;
+      margin-bottom: 10pt;
+      font-size: 11pt;
+    }
+
+    .screenshot-placeholder {
+      border: 2pt dashed #1a56db;
+      background: #eff6ff;
+      padding: 32pt 24pt;
+      text-align: center;
+      margin: 20pt 0;
+      border-radius: 4pt;
+    }
+
+    .screenshot-placeholder .label {
+      font-size: 10pt;
+      font-weight: 700;
+      color: #1a56db;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 6pt;
+    }
+
+    .screenshot-placeholder .caption {
+      font-size: 10pt;
+      color: #4b5563;
+      font-style: italic;
+    }
+
+    .callout {
+      background: #f0f9ff;
+      border-left: 4pt solid #1a56db;
+      padding: 12pt 16pt;
+      margin: 16pt 0;
+      font-size: 11pt;
+    }
+
+    .callout strong {
+      color: #1e3a5f;
+    }
+
+    ul, ol {
+      margin-top: 0;
+      margin-bottom: 10pt;
+      padding-left: 24pt;
+    }
+
+    li {
+      margin-bottom: 4pt;
+      font-size: 11pt;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 16pt 0;
+      font-size: 10.5pt;
+    }
+
+    th {
+      background: #1e3a5f;
+      color: white;
+      font-weight: 600;
+      padding: 8pt 10pt;
+      text-align: left;
+    }
+
+    td {
+      padding: 7pt 10pt;
+      border: 0.5pt solid #d1d5db;
+      vertical-align: top;
+    }
+
+    tr:nth-child(even) td {
+      background: #f9fafb;
+    }
+
+    code {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 9.5pt;
+      background: #f3f4f6;
+      padding: 1pt 4pt;
+      border-radius: 2pt;
+      color: #1e3a5f;
+    }
+
+    .author-bio {
+      margin-top: 40pt;
+      padding-top: 16pt;
+      border-top: 1pt solid #e5e7eb;
+      font-size: 10pt;
+      color: #4b5563;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #dbeafe;
+      color: #1e40af;
+      font-size: 9pt;
+      font-weight: 600;
+      padding: 2pt 8pt;
+      border-radius: 99pt;
+      margin-right: 4pt;
+      margin-bottom: 8pt;
+    }
+
+    .section-divider {
+      border: none;
+      border-top: 1pt solid #e5e7eb;
+      margin: 28pt 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TAGS -->
+  <div style="margin-bottom: 16pt;">
+    <span class="tag">Power Pages</span>
+    <span class="tag">React</span>
+    <span class="tag">Claude Code</span>
+    <span class="tag">AI-Assisted Development</span>
+    <span class="tag">Enterprise Apps</span>
+    <span class="tag">Microsoft Power Platform</span>
+  </div>
+
+  <!-- TITLE -->
+  <h1>How EPMPoint Built an IT Asset Request Portal with Microsoft Power Pages and Claude Code</h1>
+  <p class="subtitle">A behind-the-scenes look at shipping a modern enterprise web app using AI-assisted development and Microsoft's Power Platform</p>
+  <div class="meta">
+    By <strong>Neela Ranjith</strong> &nbsp;·&nbsp; EPMPoint, Inc. &nbsp;·&nbsp; February 2026 &nbsp;·&nbsp; 10 min read
+  </div>
+
+  <!-- SCREENSHOT 1 -->
+  <figure style="margin: 20pt 0; text-align: center;">
+    <img src="appscreenshots/Home page of the IT Asset Request Portal — hero section with navigation and call-to-action buttons.png" alt="Home page of the IT Asset Request Portal — hero section with navigation and call-to-action buttons" style="width: 100%; max-width: 900px; border-radius: 8pt; border: 1pt solid #d1d5db; display: block; margin: 0 auto;"/>
+    <figcaption style="font-size: 9.5pt; color: #6b7280; font-style: italic; margin-top: 6pt;">
+      <strong>Figure 1.</strong> Home page of the IT Asset Request Portal — hero section with navigation and call-to-action buttons.
+    </figcaption>
+  </figure>
+
+  <!-- INTRO -->
+  <h2>The Problem We Were Solving</h2>
+
+  <p>Anyone who has worked in a mid-sized or large organisation knows the frustration: you need a new laptop, a monitor, or a software license, and suddenly you're composing an email to IT, following up on a Teams message, and three weeks later still not sure whether your request was even received.</p>
+
+  <p>At EPMPoint, we had exactly that problem. Our IT team was managing asset requests through a mix of emails, spreadsheets, and verbal approvals — a process that worked when the company was small but was showing serious cracks as we scaled. Requests got lost. Priorities were unclear. And neither employees nor IT admins had any real visibility into the status of open requests.</p>
+
+  <p>We needed a dedicated IT Asset Request Portal: a clean, professional web application where employees could browse available assets, submit structured requests, track their status in real time, and where IT admins could manage the approval queue in one place.</p>
+
+  <p>What we <em>didn't</em> want was a six-week project. So we set a challenge for ourselves: could we build and deploy a fully functional, production-quality enterprise portal in a matter of days?</p>
+
+  <p>The answer, it turns out, was yes — and the way we got there says a lot about where enterprise software development is heading.</p>
+
+  <hr class="section-divider">
+
+  <!-- TECH STACK -->
+  <h2>Choosing the Right Stack</h2>
+
+  <p>From the outset, we knew we wanted to deploy on <strong>Microsoft Power Pages</strong>. EPMPoint already works extensively within the Microsoft Power Platform ecosystem, and Power Pages gave us enterprise-grade hosting, Dataverse integration, and built-in security — without the operational overhead of managing our own infrastructure.</p>
+
+  <p>Power Pages recently introduced support for <strong>code sites</strong>: single-page applications (SPAs) built with modern frameworks like React, Angular, or Vue, deployed directly to the Power Pages runtime. This was a game changer. Instead of being constrained to Liquid templates and drag-and-drop studio tools, we could write real component-based React code and deploy it to a fully managed Microsoft-hosted environment.</p>
+
+  <p>Our final technology choices:</p>
+
+  <table>
+    <tr>
+      <th>Layer</th>
+      <th>Technology</th>
+      <th>Reason</th>
+    </tr>
+    <tr>
+      <td>Frontend Framework</td>
+      <td>React 18 + TypeScript</td>
+      <td>Type safety, component reusability, mature ecosystem</td>
+    </tr>
+    <tr>
+      <td>Build Tool</td>
+      <td>Vite</td>
+      <td>Fast HMR, optimised production builds, minimal config</td>
+    </tr>
+    <tr>
+      <td>Routing</td>
+      <td>React Router v7</td>
+      <td>Client-side routing with clean URL structure</td>
+    </tr>
+    <tr>
+      <td>Hosting</td>
+      <td>Microsoft Power Pages</td>
+      <td>Managed infrastructure, Dataverse integration, enterprise security</td>
+    </tr>
+    <tr>
+      <td>Deployment CLI</td>
+      <td>Power Platform CLI (PAC CLI) v1.44</td>
+      <td>Direct upload-code-site command for SPA deployment</td>
+    </tr>
+    <tr>
+      <td>Development Assistant</td>
+      <td>Claude Code (Anthropic)</td>
+      <td>AI pair programmer — scaffolding, implementation, debugging</td>
+    </tr>
+  </table>
+
+  <hr class="section-divider">
+
+  <!-- CLAUDE CODE -->
+  <h2>The Role of Claude Code: AI as a True Development Partner</h2>
+
+  <p>If I'm honest, the most significant factor in how quickly we shipped this project wasn't any particular framework choice — it was <strong>Claude Code</strong>.</p>
+
+  <p>Claude Code is an AI coding assistant from Anthropic that integrates directly into your terminal and development environment. Unlike typical AI chat assistants where you copy-paste code back and forth, Claude Code operates natively in your codebase: it reads files, writes files, runs build commands, checks for TypeScript errors, and iterates — all without you needing to manage the context manually.</p>
+
+  <p>For our Power Pages portal, we used a purpose-built plugin that added Power Pages-specific skills directly to Claude Code. We started with a natural language description of what we wanted to build:</p>
+
+  <div class="callout">
+    <strong>Our prompt to Claude Code:</strong><br>
+    "Build an IT Asset Request Portal for enterprise employees. It needs a home page, a request submission form with asset type/quantity/justification fields, a status tracker page, and an IT Admin dashboard. Use React with TypeScript. Design should be clean and professional."
+  </div>
+
+  <p>From there, Claude Code ran through a systematic process: it discovered what we needed, scaffolded the entire project from a template, started a live development server, implemented each page and component, verified the output via accessibility snapshots, committed the work to Git at each milestone, and ultimately handled the entire deployment flow to Power Pages — including upgrading the PAC CLI to the correct version and unblocking JavaScript file uploads in our Dataverse environment.</p>
+
+  <p>What would typically take a developer team a week or more of back-and-forth was compressed into a focused session. But it's important to be clear about what this means: AI didn't replace the development process — it accelerated it. We still made architectural decisions, reviewed every component, caught design issues, and directed the overall vision. Claude Code handled the execution of those decisions with speed and consistency that would be difficult for any individual developer to match.</p>
+
+  <!-- SCREENSHOT 2 — embedded from actual session history -->
+  <figure style="margin: 20pt 0; text-align: center;">
+    <img src="claude-code-terminal.svg" alt="Claude Code terminal session showing the actual commands and output used to scaffold and build the IT Asset Request Portal — npm install, git commits for each page, and the final production vite build." style="width: 100%; max-width: 900px; border-radius: 8pt; border: 1pt solid #30363d; display: block; margin: 0 auto;"/>
+    <figcaption style="font-size: 9.5pt; color: #6b7280; font-style: italic; margin-top: 6pt;">
+      <strong>Figure 2.</strong> The actual Claude Code terminal session — showing npm install, real git commit hashes for every page component, and the final production build output. All commands and hashes shown are from the live build of this portal.
+    </figcaption>
+  </figure>
+
+  <hr class="section-divider">
+
+  <!-- ARCHITECTURE -->
+  <h2>Application Architecture</h2>
+
+  <p>The portal is a single-page application with five distinct routes, all served from a single <code>index.html</code> entry point hosted on Power Pages. Here's the high-level structure:</p>
+
+  <table>
+    <tr>
+      <th>Route</th>
+      <th>Page</th>
+      <th>Purpose</th>
+    </tr>
+    <tr>
+      <td><code>/</code></td>
+      <td>Home</td>
+      <td>Landing page with feature overview and quick actions</td>
+    </tr>
+    <tr>
+      <td><code>/catalog</code></td>
+      <td>Asset Catalog</td>
+      <td>Browseable inventory with category filters and request buttons</td>
+    </tr>
+    <tr>
+      <td><code>/request</code></td>
+      <td>Request Form</td>
+      <td>3-step submission form with validation and confirmation</td>
+    </tr>
+    <tr>
+      <td><code>/status</code></td>
+      <td>Status Tracker</td>
+      <td>Employee view of submitted requests with search and filter</td>
+    </tr>
+    <tr>
+      <td><code>/admin</code></td>
+      <td>Admin Dashboard</td>
+      <td>IT admin view with approval queue and metrics</td>
+    </tr>
+  </table>
+
+  <p>All styling is done via plain CSS with a custom design token system — CSS custom properties for colours, spacing, typography, and border radii. This keeps the codebase lean (no CSS-in-JS overhead) while maintaining a consistent visual language across every component. The design system includes light animation utilities (<code>animate-in</code> with staggered <code>animation-delay</code>) that give the UI a polished, alive feeling without being distracting.</p>
+
+  <hr class="section-divider">
+
+  <!-- PAGES WALKTHROUGH -->
+  <h2>Building Each Feature: A Walkthrough</h2>
+
+  <h3>1. The Home Page</h3>
+
+  <p>The home page serves two purposes: it orients first-time visitors and provides quick navigation paths for returning users. The design uses a two-column layout with a prominent headline, a brief value proposition, and three call-to-action cards that link to the Catalog, the Request Form, and the Status Tracker.</p>
+
+  <p>We also added a stats strip — Total Assets, Avg. Fulfillment Time, and Satisfaction Rate — to give the page credibility and make the portal feel like a living, maintained system rather than a static brochure.</p>
+
+  <!-- SCREENSHOT 3 -->
+  <figure style="margin: 20pt 0; text-align: center;">
+    <img src="appscreenshots/Home page — hero section with stats strip and feature navigation cards.png" alt="Home page — hero section with stats strip and feature navigation cards" style="width: 100%; max-width: 900px; border-radius: 8pt; border: 1pt solid #d1d5db; display: block; margin: 0 auto;"/>
+    <figcaption style="font-size: 9.5pt; color: #6b7280; font-style: italic; margin-top: 6pt;">
+      <strong>Figure 3.</strong> Home page — hero section with stats strip and feature navigation cards.
+    </figcaption>
+  </figure>
+
+  <h3>2. The Asset Catalog</h3>
+
+  <p>The catalog page displays all available IT assets in a responsive card grid, with category filter tabs across the top (All Assets, Laptops, Monitors, Peripherals, Software). Clicking a filter instantly narrows the grid with no page reload — a simple but effective piece of UX that makes browsing feel fast.</p>
+
+  <p>Each asset card shows an SVG category icon on a colour-coded gradient background (blue for laptops, purple for monitors, green for peripherals, amber for software), the asset name, a technical specs summary, a description, and a "Request This" button. Cards for out-of-stock items display an "Out of stock" tag and disable the request button.</p>
+
+  <p>One interesting design decision: we deliberately chose to use SVG illustrations rather than product photography. For an enterprise asset catalog, category icons communicate faster and more cleanly than stock photos, and they never have the problem of being outdated when product lines change.</p>
+
+  <!-- SCREENSHOT 4 -->
+  <figure style="margin: 20pt 0; text-align: center;">
+    <img src="appscreenshots/Asset Catalog — category filter tabs and the asset card grid showing laptops, monitors, peripherals and software.png" alt="Asset Catalog — category filter tabs and the asset card grid showing laptops, monitors, peripherals and software" style="width: 100%; max-width: 900px; border-radius: 8pt; border: 1pt solid #d1d5db; display: block; margin: 0 auto;"/>
+    <figcaption style="font-size: 9.5pt; color: #6b7280; font-style: italic; margin-top: 6pt;">
+      <strong>Figure 4.</strong> Asset Catalog — category filter tabs and the asset card grid showing laptops, monitors, peripherals and software.
+    </figcaption>
+  </figure>
+
+  <h3>3. The Request Form</h3>
+
+  <p>The request form is probably the most technically interesting component in the portal. It's a three-step multi-stage form, with a progress indicator at the top:</p>
+
+  <ol>
+    <li><strong>Asset Details</strong> — asset type, specific model, quantity, urgency level, and justification</li>
+    <li><strong>Review</strong> — a summary of the submitted details before confirmation</li>
+    <li><strong>Confirmation</strong> — a success state with the generated request ID</li>
+  </ol>
+
+  <p>The form includes client-side validation at every step: required field checks, quantity bounds, and character limits on the justification text. Navigating to the catalog and clicking "Request This" on any asset pre-populates the asset type field via URL query parameters — a small but meaningful quality-of-life feature that removes friction from the most common user flow.</p>
+
+  <!-- SCREENSHOT 5 -->
+  <figure style="margin: 20pt 0; text-align: center;">
+    <img src="appscreenshots/Request Form — Step 1 (Asset Details) and Step 3 (Confirmation screen with generated Request ID).png" alt="Request Form — Step 1 (Asset Details) and Step 3 (Confirmation screen with generated Request ID)" style="width: 100%; max-width: 900px; border-radius: 8pt; border: 1pt solid #d1d5db; display: block; margin: 0 auto;"/>
+    <figcaption style="font-size: 9.5pt; color: #6b7280; font-style: italic; margin-top: 6pt;">
+      <strong>Figure 5.</strong> Request Form — Step 1 (Asset Details) and Step 3 (Confirmation screen with generated Request ID).
+    </figcaption>
+  </figure>
+
+  <h3>4. The Status Tracker</h3>
+
+  <p>The status tracker gives employees a self-service way to check the progress of their submitted requests without emailing IT. It features a live search bar (filtering by Request ID, asset name, or category), status filter buttons (Pending, Approved, Fulfilled, Rejected), and an expandable "Details" row that reveals the IT admin's note for each actioned request.</p>
+
+  <p>The expandable note row is a particularly useful feature: it lets IT admins communicate delivery timelines, rejection reasons, or follow-up instructions inline, without requiring a separate notification system.</p>
+
+  <!-- SCREENSHOT 6 -->
+  <figure style="margin: 20pt 0; text-align: center;">
+    <img src="appscreenshots/Status Tracker — request table with search, status filter buttons, and an expanded IT note row.png" alt="Status Tracker — request table with search, status filter buttons, and an expanded IT note row" style="width: 100%; max-width: 900px; border-radius: 8pt; border: 1pt solid #d1d5db; display: block; margin: 0 auto;"/>
+    <figcaption style="font-size: 9.5pt; color: #6b7280; font-style: italic; margin-top: 6pt;">
+      <strong>Figure 6.</strong> Status Tracker — request table with search, status filter buttons, and an expanded IT note row.
+    </figcaption>
+  </figure>
+
+  <h3>5. The Admin Dashboard</h3>
+
+  <p>The admin dashboard is designed for the IT team, not for employees. At the top, four metric cards give an at-a-glance view of total requests, pending approvals, approved/fulfilled count, and average fulfillment time. Below that is the approval queue — a full data table of all requests — and a sidebar showing a horizontal bar chart of requests by category.</p>
+
+  <p>Each pending request has an Approve and Reject button. Clicking either triggers an inline status update (no page reload) and shows a dismissible notification banner at the top of the page confirming the action. Requests that have already been actioned show a dash in the actions column, keeping the UI uncluttered.</p>
+
+  <!-- SCREENSHOT 7 -->
+  <figure style="margin: 20pt 0; text-align: center;">
+    <img src="appscreenshots/Admin Dashboard — metric cards, approval queue table with Approve_Reject actions, and category bar chart.png" alt="Admin Dashboard — metric cards, approval queue table with Approve/Reject actions, and category bar chart" style="width: 100%; max-width: 900px; border-radius: 8pt; border: 1pt solid #d1d5db; display: block; margin: 0 auto;"/>
+    <figcaption style="font-size: 9.5pt; color: #6b7280; font-style: italic; margin-top: 6pt;">
+      <strong>Figure 7.</strong> Admin Dashboard — metric cards, approval queue table with Approve/Reject actions, and category bar chart.
+    </figcaption>
+  </figure>
+
+  <hr class="section-divider">
+
+  <!-- DESIGN -->
+  <h2>Design Philosophy: Clean, Accessible, Professional</h2>
+
+  <p>The design brief was simple: this is an internal enterprise tool, not a marketing site. It should feel trustworthy, be fast to navigate, and get out of the way of the task at hand.</p>
+
+  <p>We chose a blue-anchored palette — <code>#1a56db</code> as the primary — with generous white space, subtle card shadows, and a monospace font for IDs, dates, and technical values. This creates a clear visual hierarchy between informational content and interactive elements without being heavy-handed.</p>
+
+  <p>Accessibility was treated as a requirement, not an afterthought:</p>
+  <ul>
+    <li>All interactive elements have <code>aria-label</code> attributes</li>
+    <li>Status badges use both colour and text labels (not colour alone)</li>
+    <li>Tables use proper <code>scope="col"</code> headers</li>
+    <li>Filter buttons use <code>aria-pressed</code> states</li>
+    <li>Form errors are announced to screen readers via <code>aria-live</code></li>
+    <li>Keyboard navigation works throughout without requiring a mouse</li>
+  </ul>
+
+  <p>The result is a portal that looks contemporary and polished while meeting the functional and accessibility standards you'd expect from a production enterprise application.</p>
+
+  <hr class="section-divider">
+
+  <!-- DEPLOYMENT -->
+  <h2>Deployment: From Local to Live in Minutes</h2>
+
+  <p>Deploying to Power Pages used to require a working knowledge of Dataverse configuration, portal management, and the nuances of the PAC CLI. With Claude Code handling the deployment flow, the process became a guided conversation.</p>
+
+  <p>The deployment sequence, end to end:</p>
+
+  <ol>
+    <li><strong>Build</strong> — <code>npm run build</code> compiles the React app to a <code>dist/</code> folder (three files: an HTML entry point, a CSS bundle, and a JS bundle)</li>
+    <li><strong>PAC CLI setup</strong> — Claude Code verified the installed CLI version and upgraded to v1.44.2, the first version with <code>upload-code-site</code> support</li>
+    <li><strong>Unblock JavaScript</strong> — By default, Dataverse environments block <code>.js</code> file uploads as a security measure. Claude Code used <code>pac env update-settings</code> to remove <code>js</code> from the blocked attachments list after confirming with us first</li>
+    <li><strong>Upload</strong> — <code>pac pages upload-code-site --rootPath .</code> pushed the compiled assets and created all the necessary Power Pages records (web files, web pages, web templates)</li>
+    <li><strong>Activate</strong> — The activation API provisioned the site at <strong>https://epmpoint-im.powerappsportals.com</strong> with a 90-day trial period</li>
+  </ol>
+
+  <p>Total deployment time from a clean build to a live URL: under five minutes.</p>
+
+  <!-- SCREENSHOT 8 -->
+  <figure style="margin: 20pt 0; text-align: center;">
+    <img src="appscreenshots/Live site at epmpoint-im.powerappsportals.com — home page as seen in a production browser.png" alt="Live site at https://epmpoint-im.powerappsportals.com — home page as seen in a production browser" style="width: 100%; max-width: 900px; border-radius: 8pt; border: 1pt solid #d1d5db; display: block; margin: 0 auto;"/>
+    <figcaption style="font-size: 9.5pt; color: #6b7280; font-style: italic; margin-top: 6pt;">
+      <strong>Figure 8.</strong> Live site at https://epmpoint-im.powerappsportals.com — home page as seen in a production browser.
+    </figcaption>
+  </figure>
+
+  <hr class="section-divider">
+
+  <!-- LESSONS -->
+  <h2>What We Learned</h2>
+
+  <h3>AI-assisted development is not about replacing engineers</h3>
+  <p>The most common misconception about tools like Claude Code is that they automate away the need for engineering judgment. In our experience, the opposite is true: you need <em>more</em> clarity of thought, not less. Claude Code executes with precision on whatever you specify, which means vague briefs produce vague results. Clear product thinking — knowing what you're building, for whom, and why — is more important than ever.</p>
+
+  <h3>Power Pages code sites unlock a new class of enterprise apps</h3>
+  <p>The ability to deploy a React SPA directly to Power Pages changes the calculus for internal tooling. You get the development ergonomics of a modern JavaScript framework with the operational simplicity and security posture of the Microsoft Power Platform. For teams already in the Microsoft ecosystem, this is a genuinely compelling option.</p>
+
+  <h3>Invest in design tokens early</h3>
+  <p>Setting up CSS custom properties for colours, spacing, and typography at the start of the project paid off throughout. Every component could use the same variables, and making a global design change — like adjusting the primary colour or the base spacing unit — required changing one value, not hunting through dozens of files.</p>
+
+  <h3>Accessibility from day one is cheaper than retrofitting it</h3>
+  <p>Because we built accessibility in from the start (ARIA attributes, semantic HTML, keyboard navigation), there was no costly remediation phase at the end. Every component was accessible by the time it was committed.</p>
+
+  <hr class="section-divider">
+
+  <!-- WHATS NEXT -->
+  <h2>What's Next</h2>
+
+  <p>The current portal is a fully functional frontend with mock data. The natural next steps are:</p>
+
+  <ul>
+    <li><strong>Dataverse integration</strong> — Connect the request form and status tracker to real Dataverse tables so data persists across sessions and users</li>
+    <li><strong>Authentication</strong> — Add Microsoft Entra ID sign-in so employees see only their own requests, and the admin dashboard is restricted to IT staff</li>
+    <li><strong>Notifications</strong> — Trigger Power Automate flows when requests are approved or rejected, sending email or Teams notifications to employees</li>
+    <li><strong>Reporting</strong> — Extend the admin dashboard with historical trend data, export to Excel, and integration with Power BI for deeper analytics</li>
+  </ul>
+
+  <p>Each of these is achievable within the Power Platform ecosystem — Dataverse for storage, Power Automate for workflows, Power BI for analytics — all without leaving the Microsoft toolchain we already use.</p>
+
+  <hr class="section-divider">
+
+  <!-- CONCLUSION -->
+  <h2>Conclusion</h2>
+
+  <p>Building the IT Asset Request Portal reminded us that the bottleneck in enterprise software development is rarely talent — it's time and coordination. The combination of a clear product vision, a modern frontend stack, Microsoft Power Pages as the deployment target, and Claude Code as an AI development partner compressed what would traditionally be a multi-week project into a focused, productive session.</p>
+
+  <p>The result is a portal that employees will actually use: fast, intuitive, accessible, and purpose-built for the task. And it's deployed on infrastructure that EPMPoint's IT team already knows how to manage.</p>
+
+  <p>If you're sitting on a backlog of internal tooling projects that "would be nice to have but there's never time," it might be worth reconsidering that assumption. The tools available today make some of those projects a lot more achievable than they used to be.</p>
+
+  <p>The code is maintainable, the architecture is extensible, and the foundation is solid. We're excited to keep building on it.</p>
+
+  <hr class="section-divider">
+
+  <!-- AUTHOR BIO -->
+  <div class="author-bio">
+    <strong>About the Author</strong><br>
+    <strong>Neela Ranjith</strong> is a developer at EPMPoint, Inc., specialising in Microsoft Power Platform, enterprise web applications, and AI-assisted development workflows. EPMPoint helps organisations design and deliver technology-driven solutions across the Power Platform ecosystem.
+    <br><br>
+    <em>Have questions about this project or want to discuss building something similar for your organisation? Reach out to the EPMPoint team at <strong>[CONTACT EMAIL PLACEHOLDER]</strong>.</em>
+  </div>
+
+</body>
+</html>
